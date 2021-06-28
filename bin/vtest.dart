@@ -8,7 +8,6 @@ void main() async {
   // expect this being run from same dir that contains the dyn shared-lib file
   final dylib = DynamicLibrary.open('./fibrec.so');
 
-  // calls int sum(int a, int b);
   final fibPointer = dylib.lookup<NativeFunction<FibFunc>>('fibv');
   final fib = fibPointer.asFunction<Fib>();
   print('Fib 7 = ${fib(7)}');
